@@ -84,7 +84,13 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
           >
-            <Button variant="primary" size="lg" className="shadow-lg shadow-psi-300/20 px-8">
+            <Button 
+              variant="primary" 
+              size="lg" 
+              className="shadow-lg shadow-psi-300/20 px-8"
+              href="https://pay.kiwify.com.br/avjNVQ2"
+              target="_blank"
+            >
               Quero organizar minha prática clínica
             </Button>
           </motion.div>

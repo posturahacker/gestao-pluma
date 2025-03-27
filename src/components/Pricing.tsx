@@ -98,7 +98,13 @@ const Pricing = () => {
                   </p>
                 </div>
                 
-                <Button variant="primary" size="lg" className="w-full mb-6 shadow-lg shadow-psi-300/20">
+                <Button 
+                  variant="primary" 
+                  size="lg" 
+                  className="w-full mb-6 shadow-lg shadow-psi-300/20"
+                  href="https://pay.kiwify.com.br/avjNVQ2"
+                  target="_blank"
+                >
                   Quero meu <BrandName />!
                 </Button>
               </div>

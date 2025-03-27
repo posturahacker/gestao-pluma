@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { cn } from '@/lib/utils';
 
@@ -12,6 +11,8 @@ type ButtonProps = {
   disabled?: boolean;
   asChild?: boolean;
   icon?: React.ReactNode;
+  href?: string;
+  target?: string;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -24,6 +25,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     type = 'button',
     disabled = false,
     icon,
+    href,
+    target,
     ...props 
   }, ref) => {
     const variants = {
@@ -40,16 +43,32 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       lg: 'text-lg px-6 py-3 rounded-xl',
     };
 
+    const classes = cn(
+      'font-medium flex items-center justify-center gap-2 focus:outline-none disabled:opacity-60 disabled:pointer-events-none',
+      variants[variant],
+      variant !== 'link' && sizes[size],
+      className
+    );
+
+    if (href) {
+      return (
+        <a
+          href={href}
+          target={target}
+          className={classes}
+          onClick={onClick}
+        >
+          {icon && <span className="inline-flex">{icon}</span>}
+          {children}
+        </a>
+      );
+    }
+
     return (
       <button
         ref={ref}
         type={type}
-        className={cn(
-          'font-medium flex items-center justify-center gap-2 focus:outline-none disabled:opacity-60 disabled:pointer-events-none',
-          variants[variant],
-          variant !== 'link' && sizes[size],
-          className
-        )}
+        className={classes}
         onClick={onClick}
         disabled={disabled}
         {...props}

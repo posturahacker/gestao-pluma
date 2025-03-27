@@ -48,7 +48,13 @@ const Navbar = () => {
           </nav>
           
           <div className="hidden md:block">
-            <Button variant="primary">Quero organizar minha prática</Button>
+            <Button 
+              variant="primary"
+              href="https://pay.kiwify.com.br/avjNVQ2"
+              target="_blank"
+            >
+              Quero organizar minha prática
+            </Button>
           </div>
           
           {/* Mobile Menu Button */}
@@ -105,7 +111,14 @@ const Navbar = () => {
             FAQ
           </a>
           <div className="mt-2 px-4">
-            <Button variant="primary" className="w-full">Quero organizar minha prática</Button>
+            <Button 
+              variant="primary" 
+              className="w-full"
+              href="https://pay.kiwify.com.br/avjNVQ2"
+              target="_blank"
+            >
+              Quero organizar minha prática
+            </Button>
           </div>
         </div>
       </div>
