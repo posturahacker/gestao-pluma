@@ -4,9 +4,7 @@ import { Check } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const BrandName = () => (
-  <>
-    Gestão<span className="italic">Pluma</span>
-  </>
+  <span className="whitespace-nowrap">Gestão<span className="italic">Pluma</span></span>
 );
 
 const PricingFeature: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -73,7 +71,7 @@ const Pricing = () => {
           className="max-w-4xl mx-auto glass-card shadow-xl rounded-3xl overflow-hidden reveal"
         >
           <div className="bg-gradient-to-r from-psi-400 to-psi-500 p-6 text-white">
-            <h3 className="text-2xl font-display font-semibold mb-2">Gestão Pluma</h3>
+            <h3 className="text-2xl font-display font-semibold mb-2"><BrandName /></h3>
             <p>Sistema completo para psicólogas organizarem sua clínica</p>
           </div>
           
@@ -87,8 +85,8 @@ const Pricing = () => {
                 
                 <div className="mb-6">
                   <p className="text-muted-foreground mb-1">Oferta especial</p>
-                  <p className="text-4xl font-bold text-foreground">R$297</p>
-                  <p className="text-muted-foreground">ou 12x de R$29,70</p>
+                  <p className="text-4xl font-bold text-foreground">R$197</p>
+                  <p className="text-muted-foreground">ou 12x de R$19,70</p>
                 </div>
                 
                 <div className="mb-6 bg-psi-50 p-4 rounded-lg">

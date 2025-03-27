@@ -6,10 +6,6 @@
     <title>PsiNotionFlow - Sistema para Psicólogas Organizarem sua Clínica</title>
     <meta name="description" content="Sistema completo no Notion para psicólogas organizarem sua clínica com clareza e leveza. Organize pacientes, finanças, agenda e muito mais." />
     <meta name="author" content="PsiNotionFlow" />
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 
     <meta property="og:title" content="PsiNotionFlow - Sistema para Psicólogas" />
     <meta property="og:description" content="Sistema completo no Notion para psicólogas organizarem sua clínica com clareza e leveza." />
@@ -43,119 +39,13 @@
       fbq('track', 'PageView');
     </script>
     <!-- End Meta Pixel Code -->
-    
-    <style>
-      body {
-        font-family: 'Inter', sans-serif;
-        margin: 0;
-        padding: 0;
-        color: #333;
-        background-color: #faf8f4;
-      }
-      .container {
-        width: 90%;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 2rem 0;
-      }
-      header {
-        text-align: center;
-        padding: 2rem 0;
-      }
-      h1 {
-        font-family: 'Instrument Serif', serif;
-        font-size: 2.5rem;
-        margin-bottom: 0.5rem;
-        color: #4b26ae;
-      }
-      .pricing {
-        display: flex;
-        justify-content: center;
-        padding: 2rem 0;
-      }
-      .card {
-        background-color: white;
-        border-radius: 8px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        padding: 2rem;
-        text-align: center;
-        max-width: 400px;
-        width: 100%;
-      }
-      .price {
-        font-size: 3rem;
-        font-weight: bold;
-        color: #4b26ae;
-        margin: 1rem 0;
-      }
-      .old-price {
-        text-decoration: line-through;
-        color: #888;
-        font-size: 1.5rem;
-      }
-      .cta {
-        display: inline-block;
-        background-color: #4b26ae;
-        color: white;
-        padding: 0.8rem 2rem;
-        border-radius: 30px;
-        text-decoration: none;
-        font-weight: bold;
-        margin-top: 1rem;
-        transition: background-color 0.3s ease;
-      }
-      .cta:hover {
-        background-color: #3f238c;
-      }
-      .features {
-        margin-top: 1.5rem;
-        text-align: left;
-      }
-      .feature {
-        margin-bottom: 0.5rem;
-        display: flex;
-        align-items: center;
-      }
-      .feature:before {
-        content: "✓";
-        color: #4b26ae;
-        margin-right: 0.5rem;
-        font-weight: bold;
-      }
-    </style>
   </head>
 
   <body>
-    <div class="container">
-      <header>
-        <h1>PsiNotionFlow</h1>
-        <p>Sistema completo no Notion para psicólogas organizarem sua clínica com clareza e leveza</p>
-      </header>
-      
-      <section class="pricing">
-        <div class="card">
-          <h2>Plano Anual</h2>
-          <p class="old-price">R$ 197</p>
-          <p class="price">R$ 197</p>
-          <p>Pagamento único por 12 meses de acesso</p>
-          <div class="features">
-            <div class="feature">Organização de pacientes</div>
-            <div class="feature">Gestão financeira</div>
-            <div class="feature">Agendamento integrado</div>
-            <div class="feature">Relatórios personalizados</div>
-            <div class="feature">Suporte exclusivo</div>
-          </div>
-          <a href="#" class="cta">Comece Agora</a>
-        </div>
-      </section>
-    </div>
-    
-    <!-- Meta Pixel noscript -->
     <noscript><img height="1" width="1" style="display:none"
       src="https://www.facebook.com/tr?id=1768268140412454&ev=PageView&noscript=1"
     /></noscript>
-    <!-- End Meta Pixel Code -->
-    
+    <div id="root"></div>
     <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
     <script type="module" src="/src/main.tsx"></script>
