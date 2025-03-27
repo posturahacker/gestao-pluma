@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" style="scroll-behavior: smooth;">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,10 +19,140 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@gestaopluma" />
     <meta name="twitter:image" content="/favicon.ico" />
+    
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-766KC1DRRL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-766KC1DRRL');
+    </script>
+    
+    <!-- Meta Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1768268140412454');
+      fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=1768268140412454&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+    
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        margin: 0;
+        padding: 0;
+        color: #333;
+        background-color: #faf8f4;
+      }
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 0;
+      }
+      header {
+        text-align: center;
+        padding: 2rem 0;
+      }
+      h1 {
+        font-family: 'Instrument Serif', serif;
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        color: #4b26ae;
+      }
+      .pricing {
+        display: flex;
+        justify-content: center;
+        padding: 2rem 0;
+      }
+      .card {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        padding: 2rem;
+        text-align: center;
+        max-width: 400px;
+        width: 100%;
+      }
+      .price {
+        font-size: 3rem;
+        font-weight: bold;
+        color: #4b26ae;
+        margin: 1rem 0;
+      }
+      .old-price {
+        text-decoration: line-through;
+        color: #888;
+        font-size: 1.5rem;
+      }
+      .cta {
+        display: inline-block;
+        background-color: #4b26ae;
+        color: white;
+        padding: 0.8rem 2rem;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: bold;
+        margin-top: 1rem;
+        transition: background-color 0.3s ease;
+      }
+      .cta:hover {
+        background-color: #3f238c;
+      }
+      .features {
+        margin-top: 1.5rem;
+        text-align: left;
+      }
+      .feature {
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+      }
+      .feature:before {
+        content: "✓";
+        color: #4b26ae;
+        margin-right: 0.5rem;
+        font-weight: bold;
+      }
+    </style>
   </head>
 
   <body>
-    <div id="root"></div>
+    <div class="container">
+      <header>
+        <h1>Gestão Pluma</h1>
+        <p>Sistema completo para psicólogas organizarem sua clínica com clareza e leveza</p>
+      </header>
+      
+      <section class="pricing">
+        <div class="card">
+          <h2>Plano Anual</h2>
+          <p class="old-price">R$ 297</p>
+          <p class="price">R$ 197</p>
+          <p>Pagamento único por 12 meses de acesso</p>
+          <div class="features">
+            <div class="feature">Organização de pacientes</div>
+            <div class="feature">Gestão financeira</div>
+            <div class="feature">Agendamento integrado</div>
+            <div class="feature">Relatórios personalizados</div>
+            <div class="feature">Suporte exclusivo</div>
+          </div>
+          <a href="#" class="cta">Comece Agora</a>
+        </div>
+      </section>
+    </div>
+    
     <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
     <script type="module" src="/src/main.tsx"></script>
