@@ -87,7 +87,7 @@ const Hero = () => {
             <Button 
               variant="primary" 
               size="lg" 
-              className="w-full max-w-2xl py-6 shadow-lg shadow-psi-300/20 text-lg"
+              className="w-full max-w-3xl py-8 shadow-lg shadow-psi-300/20 text-lg font-medium"
               href="#pricing"
             >
               Quero organizar minha prática clínica
