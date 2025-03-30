@@ -9,103 +9,32 @@ const BrandName = () => (
   </>
 );
 
-interface BenefitProps {
-  title: string;
-  description: React.ReactNode;
-  icon: React.ReactNode;
-  delay: number;
-}
-
-const Benefit: React.FC<BenefitProps> = ({ title, description, icon, delay }) => {
-  const benefitRef = useRef<HTMLDivElement>(null);
-  
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            entry.target.classList.add('active');
-          }, delay);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    
-    if (benefitRef.current) {
-      observer.observe(benefitRef.current);
-    }
-    
-    return () => {
-      if (benefitRef.current) {
-        observer.unobserve(benefitRef.current);
-      }
-    };
-  }, [delay]);
-  
-  return (
-    <div 
-      ref={benefitRef}
-      className={cn(
-        "reveal flex flex-col md:flex-row items-start gap-5 p-6 rounded-2xl transition-all duration-500",
-        `reveal-delay-${delay}`
-      )}
-    >
-      <div className="mb-4 md:mb-0 p-3 bg-psi-100 rounded-xl w-12 h-12 flex items-center justify-center shrink-0 text-psi-600">
-        {icon}
-      </div>
-      <div>
-        <h3 className="text-xl font-semibold mb-2">{title}</h3>
-        <p className="text-muted-foreground">{description}</p>
-      </div>
-    </div>
-  );
-};
-
 const Benefits = () => {
   const benefitsData = [
     {
       title: "Economia de tempo",
-      description: <>O <BrandName /> centraliza todas as informações da sua prática em um único local, evitando gastar tempo com tarefas administrativas. Com tudo organizado, você pode focar no que realmente importa: atender seus pacientes com mais qualidade e cuidar do seu próprio bem-estar.</>,
+      description: <>Todas as informações centralizadas em um único local. Processos otimizados e automatizados que eliminam a burocracia, permitindo que você foque no que realmente importa: seus pacientes e seu bem-estar.</>,
       icon: <Clock size={24} />,
-      delay: 100
+      iconBefore: <TimerOff size={24} />,
+      before: "Tempo precioso desperdiçado com papelada, agendamentos manuais e burocracia. Horas gastas procurando informações espalhadas em diferentes lugares, planilhas desorganizadas e anotações perdidas."
     },
     {
       title: "Mais presença",
-      description: "Com as tarefas administrativas organizadas, você consegue estar mais presente durante as sessões, sem a preocupação de lembrar detalhes administrativos ou se perder em anotações desorganizadas. Seus pacientes sentirão a diferença!",
+      description: "Sistema organizado que elimina preocupações administrativas durante as sessões. Você consegue estar 100% presente para seus pacientes, sem distrações com anotações ou detalhes burocráticos.",
       icon: <Brain size={24} />,
-      delay: 200
+      iconBefore: <FileSearch size={24} />,
+      before: "Sessões prejudicadas por distrações constantes com questões administrativas. Dificuldade em manter o foco no paciente por estar preocupada com anotações, próximos horários e pagamentos pendentes."
     },
     {
       title: "Mais crescimento",
-      description: <>O <BrandName /> ajuda você a usar o tempo da melhor forma, oferecendo uma visão sistêmica da sua prática para que consiga enxergar novas oportunidades, expandir seus serviços e transformar sua vocação em uma carreira próspera e sustentável.</>,
+      description: <>Visão sistêmica da sua prática que permite identificar oportunidades de crescimento. Tempo e energia direcionados para expandir seus serviços e construir uma carreira próspera.</>,
       icon: <TrendingUp size={24} />,
-      delay: 300
-    }
-  ];
-
-  const comparisonData = [
-    {
-      disorganized: "Perda de tempo com papelada, agendamentos manuais e burocracia",
-      organized: "Economia de tempo com organização centralizada e processos otimizados",
-      iconDisorganized: <TimerOff size={20} />,
-      iconOrganized: <Clock size={20} />
-    },
-    {
-      disorganized: "Distração durante as sessões por preocupações administrativas",
-      organized: "Presença total nas sessões, focada exclusivamente em seus pacientes",
-      iconDisorganized: <FileSearch size={20} />,
-      iconOrganized: <Brain size={20} />
-    },
-    {
-      disorganized: "Estagnação profissional por falta de visão estratégica",
-      organized: "Crescimento sustentável com visão clara das oportunidades",
-      iconDisorganized: <TrendingDown size={20} />,
-      iconOrganized: <TrendingUp size={20} />
+      iconBefore: <TrendingDown size={24} />,
+      before: "Carreira estagnada pela falta de visão estratégica do negócio. Dificuldade em expandir a prática e aumentar a renda por não ter clareza dos números, oportunidades perdidas e tempo mal aproveitado."
     }
   ];
 
   const sectionRef = useRef<HTMLDivElement>(null);
-  const compareRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -121,16 +50,9 @@ const Benefits = () => {
       observer.observe(sectionRef.current);
     }
     
-    if (compareRef.current) {
-      observer.observe(compareRef.current);
-    }
-    
     return () => {
       if (sectionRef.current) {
         observer.unobserve(sectionRef.current);
-      }
-      if (compareRef.current) {
-        observer.unobserve(compareRef.current);
       }
     };
   }, []);
@@ -149,55 +71,36 @@ const Benefits = () => {
             Chega de desorganização. O <BrandName /> é muito mais que um simples organizador – é uma solução completa para psicólogas.
           </p>
         </div>
-        
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-6xl mx-auto">
-          <div className="flex flex-col gap-10">
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          {/* Coluna "Antes" */}
+          <div className="bg-white/50 p-8 rounded-2xl border border-gray-100 space-y-8">
+            <h3 className="text-xl font-semibold text-center mb-8 text-red-600">Sem organização</h3>
             {benefitsData.map((benefit, index) => (
-              <Benefit
-                key={index}
-                title={benefit.title}
-                description={benefit.description}
-                icon={benefit.icon}
-                delay={benefit.delay}
-              />
+              <div key={`before-${index}`} className="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm">
+                <div className="p-2 bg-red-100 rounded-lg text-red-600">
+                  {benefit.iconBefore}
+                </div>
+                <p className="text-muted-foreground">{benefit.before}</p>
+              </div>
             ))}
           </div>
-          
-          <motion.div 
-            className="flex items-center justify-center reveal"
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            ref={compareRef}
-          >
-            <div className="glass-card p-6 rounded-2xl shadow-xl w-full">
-              <h3 className="text-xl font-semibold text-center mb-6">Antes × Depois</h3>
-              
-              <div className="space-y-6">
-                {comparisonData.map((item, index) => (
-                  <div key={index} className="grid grid-cols-1 md:grid-cols-2 gap-4 pb-6 border-b border-gray-100 last:border-0 last:pb-0">
-                    <div className="flex items-start gap-3 p-3 bg-red-50 rounded-lg">
-                      <div className="p-2 bg-red-100 text-red-600 rounded-full">
-                        <X size={16} />
-                      </div>
-                      <div>
-                        <p className="text-sm text-red-700">{item.disorganized}</p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-start gap-3 p-3 bg-green-50 rounded-lg">
-                      <div className="p-2 bg-green-100 text-green-600 rounded-full">
-                        <Check size={16} />
-                      </div>
-                      <div>
-                        <p className="text-sm text-green-700">{item.organized}</p>
-                      </div>
-                    </div>
+
+          {/* Coluna "Depois" */}
+          <div className="bg-white/50 p-8 rounded-2xl border border-gray-100 space-y-8">
+            <h3 className="text-xl font-semibold text-center mb-8 text-psi-600">Com <BrandName /></h3>
+            {benefitsData.map((benefit, index) => (
+              <div key={`after-${index}`} className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-psi-100 rounded-lg text-psi-600">
+                    {benefit.icon}
                   </div>
-                ))}
+                  <h4 className="text-lg font-medium">{benefit.title}</h4>
+                </div>
+                <p className="text-muted-foreground pl-12">{benefit.description}</p>
               </div>
-            </div>
-          </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
