@@ -80,13 +80,13 @@ const Pricing = () => {
               <div className="flex-1">
                 <div className="mb-6">
                   <p className="text-muted-foreground mb-1">Valor normal</p>
-                  <p className="text-2xl font-medium line-through decoration-2 text-muted-foreground">R$904,00</p>
+                  <p className="text-2xl font-medium line-through decoration-2 text-muted-foreground">R$197,00</p>
                 </div>
                 
                 <div className="mb-6">
                   <p className="text-muted-foreground mb-1">Oferta especial</p>
-                  <p className="text-4xl font-bold text-foreground">R$197</p>
-                  <p className="text-muted-foreground">ou 12x de R$19,70</p>
+                  <p className="text-4xl font-bold text-foreground">R$47</p>
+                  <p className="text-muted-foreground">ou 12x de R$4,70</p>
                 </div>
                 
                 <div className="mb-6 bg-psi-50 p-4 rounded-lg">
