@@ -79,27 +79,10 @@ const Hero = () => {
           </motion.div>
           
           <motion.div
-            className="flex justify-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <Button 
-              variant="primary" 
-              size="lg" 
-              className="shadow-lg shadow-psi-300/20 px-8"
-              href="https://pay.kiwify.com.br/avjNVQ2"
-              target="_blank"
-            >
-              Quero organizar minha prática clínica
-            </Button>
-          </motion.div>
-          
-          <motion.div
             className="mt-20 text-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
           >
             <a href="#features" className="inline-flex flex-col items-center text-sm text-muted-foreground hover:text-psi-500 transition-colors">
               <span className="mb-2">Veja o sistema por dentro</span>
