@@ -47,16 +47,6 @@ const Navbar = () => {
             <a href="#faq" className="text-sm font-medium text-foreground hover:text-psi-600 transition-colors">FAQ</a>
           </nav>
           
-          <div className="hidden md:block">
-            <Button 
-              variant="primary"
-              href="https://pay.kiwify.com.br/avjNVQ2"
-              target="_blank"
-            >
-              Quero organizar minha prática
-            </Button>
-          </div>
-          
           {/* Mobile Menu Button */}
           <button 
             className="md:hidden p-2 text-gray-600 focus:outline-none"
@@ -110,16 +100,6 @@ const Navbar = () => {
           >
             FAQ
           </a>
-          <div className="mt-2 px-4">
-            <Button 
-              variant="primary" 
-              className="w-full"
-              href="https://pay.kiwify.com.br/avjNVQ2"
-              target="_blank"
-            >
-              Quero organizar minha prática
-            </Button>
-          </div>
         </div>
       </div>
     </header>
