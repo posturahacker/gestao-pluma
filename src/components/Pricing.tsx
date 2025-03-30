@@ -98,7 +98,7 @@ const Pricing = () => {
                 <Button 
                   variant="primary" 
                   size="lg" 
-                  className="w-full py-8 shadow-lg shadow-psi-300/20 text-lg font-medium"
+                  className="w-full py-8 mb-6 shadow-lg shadow-psi-300/20 text-lg font-medium"
                   href="https://pay.kiwify.com.br/avjNVQ2"
                   target="_blank"
                 >
