@@ -75,16 +75,8 @@ const Faq = () => {
       answer: "Com certeza! O sistema foi desenvolvido para atender às necessidades tanto de profissionais que trabalham presencialmente quanto online, com recursos específicos para cada modalidade."
     },
     {
-      question: "O Sistema tem modelos de documentos específicos para psicólogas?",
-      answer: "Sim! Você receberá modelos de contratos, termos de consentimento, declarações e outros documentos essenciais para a prática clínica, todos criados especificamente para psicólogas."
-    },
-    {
       question: "Como funciona o sistema de evolução clínica dos pacientes?",
       answer: "O sistema permite registrar de forma organizada todas as sessões, observações, técnicas utilizadas e evolução dos pacientes. Você consegue visualizar o histórico completo e fazer anotações de forma segura e acessível."
-    },
-    {
-      question: "O Sistema tem ferramenta de precificação para consultas?",
-      answer: "Sim! Você terá acesso a planilhas e modelos para calcular o valor ideal das suas consultas, considerando seus custos, tempo investido e objetivos financeiros."
     }
   ];
   
