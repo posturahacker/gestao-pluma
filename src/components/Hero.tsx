@@ -87,10 +87,10 @@ const Hero = () => {
             <Button 
               variant="primary" 
               size="md" 
-              className="shadow-lg shadow-psi-300/20 px-8 py-3 rounded-full"
+              className="shadow-lg shadow-psi-300/20 px-8 py-3 rounded-[100px]"
               href="#pricing"
             >
-              Quero organizar minha prática clínica
+              Quero organizar minha prática
             </Button>
           </motion.div>
           
