@@ -91,15 +91,14 @@ const Pricing = () => {
                 
                 <div className="mb-6 bg-psi-50 p-4 rounded-lg">
                   <p className="text-sm text-psi-700">
-                    O acesso ao <BrandName /> é vitalício: uma vez que você adquire, ele será pra sempre seu. 
-                    O acesso de 18 meses é a área de membros, com aulas, suporte com o TimePluma e materiais bônus.
+                    O acesso ao <BrandName /> é vitalício: uma vez que você adquire, ele será pra sempre seu, com acesso aos tutoriais, suporte com o TimePluma e materiais bônus.
                   </p>
                 </div>
                 
                 <Button 
                   variant="primary" 
                   size="lg" 
-                  className="w-full mb-6 shadow-lg shadow-psi-300/20"
+                  className="w-full py-6 mb-6 shadow-lg shadow-psi-300/20 text-lg"
                   href="https://pay.kiwify.com.br/avjNVQ2"
                   target="_blank"
                 >
@@ -114,8 +113,6 @@ const Pricing = () => {
                   <PricingFeature>Treinamento completo para utilização</PricingFeature>
                   <PricingFeature>1 ano e meio de acesso à área de membros</PricingFeature>
                   <PricingFeature>30 Prompts de Inteligência artificial</PricingFeature>
-                  <PricingFeature>Modelos de documentos essenciais</PricingFeature>
-                  <PricingFeature>Aula extra com truques do notion</PricingFeature>
                 </div>
               </div>
             </div>
