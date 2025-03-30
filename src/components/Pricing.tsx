@@ -88,22 +88,6 @@ const Pricing = () => {
                   <p className="text-4xl font-bold text-foreground">R$47</p>
                   <p className="text-muted-foreground">ou 12x de R$4,70</p>
                 </div>
-                
-                <div className="mb-6 bg-psi-50 p-4 rounded-lg">
-                  <p className="text-sm text-psi-700">
-                    O acesso ao <BrandName /> é vitalício: uma vez que você adquire, ele será pra sempre seu, com acesso aos tutoriais, suporte com o TimePluma e materiais bônus.
-                  </p>
-                </div>
-                
-                <Button 
-                  variant="primary" 
-                  size="lg" 
-                  className="w-full py-8 mb-6 shadow-lg shadow-psi-300/20 text-lg font-medium"
-                  href="https://pay.kiwify.com.br/avjNVQ2"
-                  target="_blank"
-                >
-                  Quero meu <BrandName />!
-                </Button>
               </div>
               
               <div className="flex-1">
@@ -115,6 +99,24 @@ const Pricing = () => {
                   <PricingFeature>30 Prompts de Inteligência artificial</PricingFeature>
                 </div>
               </div>
+            </div>
+
+            <div className="mt-8 border-t border-gray-100 pt-8">
+              <div className="bg-psi-50 p-6 rounded-xl mb-6">
+                <p className="text-psi-700 text-center">
+                  O acesso ao <BrandName /> é vitalício: uma vez que você adquire, ele será pra sempre seu, com acesso aos tutoriais, suporte com o TimePluma e materiais bônus.
+                </p>
+              </div>
+              
+              <Button 
+                variant="primary" 
+                size="lg" 
+                className="w-full py-6 text-lg shadow-lg shadow-psi-300/20"
+                href="https://pay.kiwify.com.br/avjNVQ2"
+                target="_blank"
+              >
+                Quero meu <BrandName />!
+              </Button>
             </div>
           </div>
         </div>
