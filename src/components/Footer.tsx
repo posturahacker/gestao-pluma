@@ -40,7 +40,7 @@ const Footer = () => {
           {/* Coluna de contato */}
           <div className="md:col-span-1">
             <h4 className="font-medium mb-6 text-lg">Contato</h4>
-            <p className="text-gray-400 text-lg">Mande uma mensagem para nós no <a href="https://wa.me/5531992812273" target="_blank" rel="noopener noreferrer" className="text-psi-300 hover:text-psi-200 transition-colors underline">WhatsApp</a></p>
+            <p className="text-gray-400 text-lg">Mande uma mensagem para nós no <a href="http://wa.me/+5511967336619" target="_blank" rel="noopener noreferrer" className="text-psi-300 hover:text-psi-200 transition-colors underline">WhatsApp</a></p>
           </div>
         </div>
         
