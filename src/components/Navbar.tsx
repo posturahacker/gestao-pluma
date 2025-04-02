@@ -115,7 +115,7 @@ const Navbar = () => {
             <Button 
               variant="primary" 
               className="w-full"
-              href="https://pay.kiwify.com.br/avjNVQ2"
+              href="https://payment.ticto.app/O5114D5AA"
               target="_blank"
             >
               Quero organizar minha prática

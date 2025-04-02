@@ -112,7 +112,7 @@ const Pricing = () => {
                 variant="primary" 
                 size="lg" 
                 className="w-full py-6 text-lg shadow-lg shadow-psi-300/20"
-                href="https://pay.kiwify.com.br/avjNVQ2"
+                href="https://payment.ticto.app/O5114D5AA"
                 target="_blank"
               >
                 Quero meu <BrandName />!
