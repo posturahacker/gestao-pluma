@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import Button from './Button';
 import { motion } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
-import { trackButtonClick } from '@/services/MetaConversionsAPI';
 
 const BrandName = () => (
   <>
@@ -90,7 +89,6 @@ const Hero = () => {
               size="md" 
               className="shadow-lg shadow-psi-300/20 px-8 py-3 rounded-[32px]"
               href="#pricing"
-              onClick={() => trackButtonClick('Hero - Ver Preços')}
             >
               Quero organizar minha prática clínica
             </Button>

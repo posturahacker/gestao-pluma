@@ -147,26 +147,7 @@ async function sendEvent(
 // Eventos predefinidos
 const trackPageView = () => sendEvent('PageView');
 
-const trackButtonClick = (buttonName: string) => sendEvent('Lead', { 
-  content_name: buttonName
-});
-
-const trackPurchaseClick = (productName: string, value: number) => sendEvent('InitiateCheckout', {
-  content_name: productName,
-  value: value,
-  currency: 'BRL'
-});
-
-const trackPurchaseComplete = (productName: string, value: number) => sendEvent('Purchase', {
-  content_name: productName,
-  value: value,
-  currency: 'BRL'
-});
-
 export {
   trackPageView,
-  trackButtonClick,
-  trackPurchaseClick,
-  trackPurchaseComplete,
   sendEvent
 }; 
