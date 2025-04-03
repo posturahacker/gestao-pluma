@@ -8,6 +8,7 @@ import Pricing from '@/components/Pricing';
 import Faq from '@/components/Faq';
 import Footer from '@/components/Footer';
 import { motion } from 'framer-motion';
+import { trackPageView } from '@/services/MetaConversionsAPI';
 
 const handleScroll = () => {
   const reveals = document.querySelectorAll('.reveal');
@@ -27,6 +28,9 @@ const Index = () => {
   useEffect(() => {
     handleScroll();
     window.addEventListener('scroll', handleScroll);
+    
+    // Rastrear visualização de página
+    trackPageView();
     
     return () => {
       window.removeEventListener('scroll', handleScroll);

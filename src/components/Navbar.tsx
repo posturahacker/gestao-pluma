@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import Button from './Button';
 import { cn } from '@/lib/utils';
+import { trackButtonClick, trackPurchaseClick } from '@/services/MetaConversionsAPI';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -53,6 +54,7 @@ const Navbar = () => {
               size="md"
               className="shadow-lg shadow-psi-300/20 px-6 py-2 rounded-[32px]"
               href="#pricing"
+              onClick={() => trackButtonClick('Ver Preços')}
             >
               Quero organizar minha prática clínica
             </Button>
@@ -117,6 +119,7 @@ const Navbar = () => {
               className="w-full"
               href="https://payment.ticto.app/O5114D5AA"
               target="_blank"
+              onClick={() => trackPurchaseClick('GestãoPluma', 47)}
             >
               Quero organizar minha prática
             </Button>
