@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 const PIXEL_ID = '1768268140412454'; // ID do Pixel do Facebook
 const ACCESS_TOKEN = 'EAAIt14txd0kBO77hbRTRkOyRo6vtmcvU6qKq5QJiMQ1VD5lZChPfqe0qCThLxSnVKRygDMOJoMlG3Dyd4k6Pwh6XRKeabZC40Gtwy8Pnr4D5VLx0wiS6UwTBLPfX4CSkU6ZA6ROCTrZCpSElUOLGuqZABSAepcRZAvWhFJJSsJOZApoxVbbtqugkkitH2BH5767ZCwZDZD';
 const API_VERSION = 'v22.0';
+const TEST_EVENT_CODE = 'TEST11067'; // Código para testes
 
 interface UserData {
   client_ip_address?: string;
@@ -118,7 +119,8 @@ async function sendEvent(
     }
 
     const payload = {
-      data: [eventData]
+      data: [eventData],
+      test_event_code: TEST_EVENT_CODE // Adicionando o código de teste
     };
 
     const endpoint = `https://graph.facebook.com/${API_VERSION}/${PIXEL_ID}/events?access_token=${ACCESS_TOKEN}`;
@@ -139,6 +141,7 @@ async function sendEvent(
     }
 
     console.log('Evento enviado com sucesso para API de Conversões do Meta:', result);
+    console.log('Evento de teste enviado com código:', TEST_EVENT_CODE);
   } catch (error) {
     console.error('Erro ao enviar evento para API de Conversões do Meta:', error);
   }
@@ -151,8 +154,18 @@ const trackContact = (contactMethod: string) => sendEvent('Contact', {
   content_name: contactMethod
 });
 
+// Função para testar eventos manualmente
+const testEvent = (eventName: string) => {
+  console.log(`Enviando evento de teste: ${eventName}`);
+  return sendEvent(eventName, {
+    content_name: `Teste manual - ${eventName}`,
+    content_category: 'teste'
+  });
+};
+
 export {
   trackPageView,
   trackContact,
-  sendEvent
+  sendEvent,
+  testEvent
 }; 
