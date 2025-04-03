@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import WhatsAppButton from "./components/WhatsAppButton";
 import { trackPageView as trackPinterestPageView } from "./services/PinterestConversionsAPI";
+import { initializeTikTokPixel, trackPageView as trackTikTokPageView } from "./services/TikTokPixel";
 
 const queryClient = new QueryClient();
 
@@ -18,10 +19,15 @@ const PageTracker = () => {
   useEffect(() => {
     // Rastrear visualização de página no Pinterest
     trackPinterestPageView();
+    // Rastrear visualização de página no TikTok
+    trackTikTokPageView();
   }, [location]);
 
   return null;
 };
+
+// Inicializar o Pixel do TikTok
+initializeTikTokPixel();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
