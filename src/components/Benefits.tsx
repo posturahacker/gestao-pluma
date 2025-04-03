@@ -13,24 +13,27 @@ const Benefits = () => {
   const benefitsData = [
     {
       title: "Economia de tempo",
+      titleBefore: "Desperdício de tempo",
       description: <>Todas as informações centralizadas em um único local. Processos otimizados e automatizados que eliminam a burocracia, permitindo que você foque no que realmente importa: seus pacientes e seu bem-estar.</>,
       icon: <Clock size={24} />,
       iconBefore: <TimerOff size={24} />,
-      before: "Tempo precioso desperdiçado com papelada, agendamentos manuais e burocracia. Horas gastas procurando informações espalhadas em diferentes lugares, planilhas desorganizadas e anotações perdidas."
+      before: "Tempo desperdiçado com papelada e burocracia desnecessária. Dificuldade em gerenciar informações espalhadas em diferentes lugares, resultando em retrabalho e ineficiência na gestão da clínica."
     },
     {
       title: "Mais presença",
+      titleBefore: "Falta de foco",
       description: "Sistema organizado que elimina preocupações administrativas durante as sessões. Você consegue estar 100% presente para seus pacientes, sem distrações com anotações ou detalhes burocráticos.",
       icon: <Brain size={24} />,
       iconBefore: <FileSearch size={24} />,
-      before: "Sessões prejudicadas por distrações constantes com questões administrativas. Dificuldade em manter o foco no paciente por estar preocupada com anotações, próximos horários e pagamentos pendentes."
+      before: "Qualidade das sessões comprometida por distrações administrativas constantes. Dificuldade em manter o foco no paciente por estar sobrecarregada com questões burocráticas e organizacionais."
     },
     {
       title: "Mais crescimento",
-      description: <>Visão sistêmica da sua prática que permite identificar oportunidades de crescimento. Tempo e energia direcionados para expandir seus serviços e construir uma carreira próspera.</>,
+      titleBefore: "Estagnação profissional",
+      description: "Visão sistêmica da sua prática que permite identificar oportunidades. Tempo e energia direcionados para expandir seus serviços e construir uma carreira próspera.",
       icon: <TrendingUp size={24} />,
       iconBefore: <TrendingDown size={24} />,
-      before: "Carreira estagnada pela falta de visão estratégica do negócio. Dificuldade em expandir a prática e aumentar a renda por não ter clareza dos números, oportunidades perdidas e tempo mal aproveitado."
+      before: "Carreira estagnada pela falta de visão estratégica do negócio. Dificuldade em expandir a prática e aumentar a renda por não ter clareza dos números."
     }
   ];
 
@@ -77,9 +80,12 @@ const Benefits = () => {
           <div className="bg-white/50 p-8 rounded-2xl border border-gray-100 space-y-8">
             <h3 className="text-xl font-semibold text-center mb-8 text-red-600">Sem organização</h3>
             {benefitsData.map((benefit, index) => (
-              <div key={`before-${index}`} className="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm">
-                <div className="p-2 bg-red-100 rounded-lg text-red-600">
-                  {benefit.iconBefore}
+              <div key={`before-${index}`} className="flex flex-col gap-4 p-4 bg-white rounded-xl shadow-sm">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-red-100 rounded-lg text-red-600">
+                    {benefit.iconBefore}
+                  </div>
+                  <h4 className="text-lg font-medium text-red-600">{benefit.titleBefore}</h4>
                 </div>
                 <p className="text-muted-foreground">{benefit.before}</p>
               </div>
@@ -90,14 +96,14 @@ const Benefits = () => {
           <div className="bg-white/50 p-8 rounded-2xl border border-gray-100 space-y-8">
             <h3 className="text-xl font-semibold text-center mb-8 text-psi-600">Com <BrandName /></h3>
             {benefitsData.map((benefit, index) => (
-              <div key={`after-${index}`} className="space-y-4">
+              <div key={`after-${index}`} className="flex flex-col gap-4 p-4 bg-white rounded-xl shadow-sm">
                 <div className="flex items-center gap-3">
                   <div className="p-2 bg-psi-100 rounded-lg text-psi-600">
                     {benefit.icon}
                   </div>
-                  <h4 className="text-lg font-medium">{benefit.title}</h4>
+                  <h4 className="text-lg font-medium text-psi-600">{benefit.title}</h4>
                 </div>
-                <p className="text-muted-foreground pl-12">{benefit.description}</p>
+                <p className="text-muted-foreground">{benefit.description}</p>
               </div>
             ))}
           </div>
