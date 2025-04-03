@@ -147,7 +147,12 @@ async function sendEvent(
 // Eventos predefinidos
 const trackPageView = () => sendEvent('PageView');
 
+const trackContact = (contactMethod: string) => sendEvent('Contact', {
+  content_name: contactMethod
+});
+
 export {
   trackPageView,
+  trackContact,
   sendEvent
 }; 
