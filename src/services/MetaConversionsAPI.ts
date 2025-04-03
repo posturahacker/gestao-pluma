@@ -3,8 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 // Configurações da API de Conversões do Meta
 const PIXEL_ID = '1768268140412454'; // ID do Pixel do Facebook
 const ACCESS_TOKEN = 'EAAIt14txd0kBO77hbRTRkOyRo6vtmcvU6qKq5QJiMQ1VD5lZChPfqe0qCThLxSnVKRygDMOJoMlG3Dyd4k6Pwh6XRKeabZC40Gtwy8Pnr4D5VLx0wiS6UwTBLPfX4CSkU6ZA6ROCTrZCpSElUOLGuqZABSAepcRZAvWhFJJSsJOZApoxVbbtqugkkitH2BH5767ZCwZDZD';
-const API_VERSION = 'v17.0'; // Usando uma versão mais estável da API
-const TEST_EVENT_CODE = 'TEST11067'; // Código para testes
+const API_VERSION = 'v17.0'; // Versão estável da API
 
 interface UserData {
   client_ip_address?: string;
@@ -71,20 +70,15 @@ function getFbCookies(): { fbp: string | null, fbc: string | null } {
 async function prepareUserData(): Promise<UserData> {
   const { fbp, fbc } = getFbCookies();
   
-  // Garantindo que temos dados de usuário suficientes para a API
+  // Preparando dados do usuário
   const userData: UserData = {
-    client_ip_address: '127.0.0.1', // IP padrão para testes
+    client_ip_address: '', // Será preenchido pelo servidor do Meta
     client_user_agent: navigator.userAgent
   };
 
   // Adicionando fbp/fbc se disponíveis
   if (fbp) userData.fbp = fbp;
   if (fbc) userData.fbc = fbc;
-
-  // Adicionando um email anônimo para testes (apenas requisito para evento de teste)
-  const testEmail = 'test@example.com';
-  const hashedEmail = await hashData(testEmail);
-  userData.em = [hashedEmail];
 
   return userData;
 }
@@ -119,26 +113,23 @@ async function sendEvent(
       eventData.custom_data = customData;
     }
 
-    // Adicionando valores padrão para testes
+    // Garantindo que temos custom_data
     if (!eventData.custom_data) {
       eventData.custom_data = {};
     }
     
-    // Garantindo que temos valor e moeda para eventos de teste
-    if (!eventData.custom_data.value) {
-      eventData.custom_data.value = 0;
+    // Garantindo valores mínimos necessários
+    if (!eventData.custom_data.currency && (eventName === 'Contact')) {
+      eventData.custom_data.currency = 'BRL';
     }
     
-    if (!eventData.custom_data.currency) {
-      eventData.custom_data.currency = 'BRL';
+    if (!eventData.custom_data.value && (eventName === 'Contact')) {
+      eventData.custom_data.value = 0;
     }
 
     const payload = {
-      data: [eventData],
-      test_event_code: TEST_EVENT_CODE
+      data: [eventData]
     };
-
-    console.log('Enviando payload:', JSON.stringify(payload, null, 2));
 
     const endpoint = `https://graph.facebook.com/${API_VERSION}/${PIXEL_ID}/events?access_token=${ACCESS_TOKEN}`;
     
@@ -154,12 +145,10 @@ async function sendEvent(
     
     if (!response.ok) {
       console.error('Erro ao enviar evento para API de Conversões do Meta:', result);
-      console.error('Detalhes do erro:', JSON.stringify(result, null, 2));
       return;
     }
 
-    console.log('Evento enviado com sucesso para API de Conversões do Meta:', result);
-    console.log('Evento de teste enviado com código:', TEST_EVENT_CODE);
+    console.log('Evento enviado com sucesso para API de Conversões do Meta');
   } catch (error) {
     console.error('Erro ao enviar evento para API de Conversões do Meta:', error);
   }
@@ -174,20 +163,8 @@ const trackContact = (contactMethod: string) => sendEvent('Contact', {
   value: 0
 });
 
-// Função para testar eventos manualmente
-const testEvent = (eventName: string) => {
-  console.log(`Enviando evento de teste: ${eventName}`);
-  return sendEvent(eventName, {
-    content_name: `Teste manual - ${eventName}`,
-    content_category: 'teste',
-    currency: 'BRL',
-    value: 0
-  });
-};
-
 export {
   trackPageView,
   trackContact,
-  sendEvent,
-  testEvent
+  sendEvent
 }; 
