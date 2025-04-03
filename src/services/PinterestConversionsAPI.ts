@@ -1,8 +1,8 @@
 import { v4 as uuidv4 } from 'uuid';
 
 // Configurações da API de Conversões do Pinterest
-const AD_ACCOUNT_ID = ''; // Seu ID de conta de anúncios do Pinterest
-const ACCESS_TOKEN = ''; // Token de acesso gerado no Ads Manager do Pinterest
+const AD_ACCOUNT_ID = import.meta.env.VITE_PINTEREST_AD_ACCOUNT_ID;
+const ACCESS_TOKEN = import.meta.env.VITE_PINTEREST_ACCESS_TOKEN;
 const API_VERSION = 'v5'; // Versão atual da API do Pinterest
 
 interface UserData {
