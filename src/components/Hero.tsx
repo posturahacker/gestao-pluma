@@ -106,10 +106,15 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
           >
             <Button
-              variant="default"
-              size="lg"
-              className="mt-8"
-              onClick={handlePurchaseClick}
+              variant="primary" 
+              size="md" 
+              className="shadow-lg shadow-psi-300/20 px-8 py-3 rounded-[32px]"
+              href="https://payment.ticto.app/O5114D5AA"
+              target="_blank"
+              onClick={() => {
+                trackInitiateCheckout('GestãoPluma', 47);
+                trackPinterestCheckout('GestãoPluma', 47);
+              }}
             >
               Quero organizar minha prática clínica
             </Button>

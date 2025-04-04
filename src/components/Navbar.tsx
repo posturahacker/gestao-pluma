@@ -69,13 +69,17 @@ const Navbar = () => {
           </nav>
           
           <div className="hidden md:block">
-            <Button 
-              variant="primary"
-              size="md"
-              className="shadow-lg shadow-psi-300/20 px-6 py-2 rounded-[32px]"
-              href="#pricing"
+            <Button
+              variant="primary" 
+              className="w-full"
+              href="https://payment.ticto.app/O5114D5AA"
+              target="_blank"
+              onClick={() => {
+                trackInitiateCheckout('GestãoPluma', 47);
+                trackPinterestCheckout('GestãoPluma', 47);
+              }}
             >
-              Quero organizar minha prática clínica
+              Quero organizar minha prática
             </Button>
           </div>
           
@@ -133,10 +137,15 @@ const Navbar = () => {
             FAQ
           </a>
           <div className="mt-2 px-4">
-            <Button 
+            <Button
               variant="primary" 
               className="w-full"
-              onClick={handlePurchaseClick}
+              href="https://payment.ticto.app/O5114D5AA"
+              target="_blank"
+              onClick={() => {
+                trackInitiateCheckout('GestãoPluma', 47);
+                trackPinterestCheckout('GestãoPluma', 47);
+              }}
             >
               Quero organizar minha prática
             </Button>
