@@ -202,7 +202,7 @@ function initializePinterestTag(): void {
 }
 
 /**
- * Rastrear visualização de página
+ * Rastrear evento de página
  */
 function trackPageView(): void {
   try {
@@ -215,16 +215,18 @@ function trackPageView(): void {
       console.log('[Pinterest Tag] Rastreando visualização de página');
     }
 
-    window.pintrk('page');
+    window.pintrk('track', 'pagevisit', {
+      event_id: uuidv4()
+    });
   } catch (error) {
     console.error('[Pinterest Tag] Erro ao rastrear visualização de página:', error);
   }
 }
 
 /**
- * Rastrear evento de contato
+ * Rastrear evento de contato/lead
  */
-function trackContact(contactMethod: string): void {
+function trackContact(leadType: string): void {
   try {
     if (!window.pintrk) {
       console.error('[Pinterest Tag] pintrk não está disponível');
@@ -232,11 +234,12 @@ function trackContact(contactMethod: string): void {
     }
 
     if (DEBUG) {
-      console.log('[Pinterest Tag] Rastreando evento de contato:', contactMethod);
+      console.log('[Pinterest Tag] Rastreando evento de contato:', leadType);
     }
 
     window.pintrk('track', 'lead', {
-      lead_type: contactMethod
+      event_id: uuidv4(),
+      lead_type: leadType
     });
   } catch (error) {
     console.error('[Pinterest Tag] Erro ao rastrear evento de contato:', error);
@@ -258,13 +261,129 @@ function trackCheckout(planName: string, price: number): void {
     }
 
     window.pintrk('track', 'checkout', {
+      event_id: uuidv4(),
       value: price,
-      currency: 'BRL',
       order_quantity: 1,
+      currency: 'BRL',
       product_name: planName
     });
   } catch (error) {
     console.error('[Pinterest Tag] Erro ao rastrear evento de checkout:', error);
+  }
+}
+
+/**
+ * Rastrear evento de inscrição
+ */
+function trackSignup(leadType?: string): void {
+  try {
+    if (!window.pintrk) {
+      console.error('[Pinterest Tag] pintrk não está disponível');
+      return;
+    }
+
+    if (DEBUG) {
+      console.log('[Pinterest Tag] Rastreando evento de inscrição:', leadType);
+    }
+
+    window.pintrk('track', 'signup', {
+      event_id: uuidv4(),
+      ...(leadType && { lead_type: leadType })
+    });
+  } catch (error) {
+    console.error('[Pinterest Tag] Erro ao rastrear evento de inscrição:', error);
+  }
+}
+
+/**
+ * Rastrear evento de visualização de vídeo
+ */
+function trackWatchVideo(videoTitle: string): void {
+  try {
+    if (!window.pintrk) {
+      console.error('[Pinterest Tag] pintrk não está disponível');
+      return;
+    }
+
+    if (DEBUG) {
+      console.log('[Pinterest Tag] Rastreando visualização de vídeo:', videoTitle);
+    }
+
+    window.pintrk('track', 'watchvideo', {
+      event_id: uuidv4(),
+      video_title: videoTitle
+    });
+  } catch (error) {
+    console.error('[Pinterest Tag] Erro ao rastrear visualização de vídeo:', error);
+  }
+}
+
+/**
+ * Rastrear evento de pesquisa
+ */
+function trackSearch(searchQuery: string): void {
+  try {
+    if (!window.pintrk) {
+      console.error('[Pinterest Tag] pintrk não está disponível');
+      return;
+    }
+
+    if (DEBUG) {
+      console.log('[Pinterest Tag] Rastreando pesquisa:', searchQuery);
+    }
+
+    window.pintrk('track', 'search', {
+      event_id: uuidv4(),
+      search_query: searchQuery
+    });
+  } catch (error) {
+    console.error('[Pinterest Tag] Erro ao rastrear pesquisa:', error);
+  }
+}
+
+/**
+ * Rastrear evento de visualização de categoria
+ */
+function trackViewCategory(category?: string): void {
+  try {
+    if (!window.pintrk) {
+      console.error('[Pinterest Tag] pintrk não está disponível');
+      return;
+    }
+
+    if (DEBUG) {
+      console.log('[Pinterest Tag] Rastreando visualização de categoria:', category);
+    }
+
+    window.pintrk('track', 'viewcategory', {
+      event_id: uuidv4(),
+      ...(category && { product_category: category })
+    });
+  } catch (error) {
+    console.error('[Pinterest Tag] Erro ao rastrear visualização de categoria:', error);
+  }
+}
+
+/**
+ * Rastrear evento personalizado
+ */
+function trackCustomEvent(eventName: string, customData?: Record<string, any>): void {
+  try {
+    if (!window.pintrk) {
+      console.error('[Pinterest Tag] pintrk não está disponível');
+      return;
+    }
+
+    if (DEBUG) {
+      console.log('[Pinterest Tag] Rastreando evento personalizado:', eventName, customData);
+    }
+
+    window.pintrk('track', eventName, {
+      event_id: uuidv4(),
+      ...customData
+    });
+  } catch (error) {
+    console.error('[Pinterest Tag] Erro ao rastrear evento personalizado:', error);
   }
 }
 
@@ -273,5 +392,10 @@ export {
   trackPageView,
   trackContact,
   trackCheckout,
+  trackSignup,
+  trackWatchVideo,
+  trackSearch,
+  trackViewCategory,
+  trackCustomEvent,
   sendEvent
 }; 
