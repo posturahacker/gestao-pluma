@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound";
 import WhatsAppButton from "./components/WhatsAppButton";
 import { trackPageView as trackPinterestPageView } from "./services/PinterestConversionsAPI";
 import { initializeTikTokPixel, trackPageView as trackTikTokPageView } from "./services/TikTokPixel";
+import { initializeGoogleAnalytics, trackPageView as trackGooglePageView } from "./services/GoogleAnalytics";
 
 const queryClient = new QueryClient();
 
@@ -21,13 +22,16 @@ const PageTracker = () => {
     trackPinterestPageView();
     // Rastrear visualização de página no TikTok
     trackTikTokPageView();
+    // Rastrear visualização de página no Google Analytics
+    trackGooglePageView();
   }, [location]);
 
   return null;
 };
 
-// Inicializar o Pixel do TikTok
+// Inicializar pixels e analytics
 initializeTikTokPixel();
+initializeGoogleAnalytics();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>

@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { trackContact as trackMetaContact } from "@/services/MetaConversionsAPI";
 import { trackContact as trackPinterestContact } from "@/services/PinterestConversionsAPI";
 import { trackContact as trackTikTokContact } from "@/services/TikTokPixel";
+import { trackContact as trackGoogleContact } from "@/services/GoogleAnalytics";
 
 const WhatsAppButton = () => {
   const handleClick = () => {
@@ -13,6 +14,9 @@ const WhatsAppButton = () => {
 
     // Rastrear evento de contato no TikTok
     trackTikTokContact('WhatsApp');
+
+    // Rastrear evento de contato no Google Analytics
+    trackGoogleContact('WhatsApp');
     
     // Redirecionar para o WhatsApp
     window.open('https://wa.me/5511973841920', '_blank');
