@@ -3,9 +3,13 @@ import { trackContact as trackMetaContact } from "@/services/MetaConversionsAPI"
 import { trackContact as trackPinterestContact } from "@/services/PinterestConversionsAPI";
 import { trackContact as trackTikTokContact } from "@/services/TikTokPixel";
 import { trackContact as trackGoogleContact } from "@/services/GoogleAnalytics";
+import { trackContact as trackDataLayerContact } from "@/services/DataLayer";
 
 const WhatsAppButton = () => {
   const handleClick = () => {
+    // Rastrear evento de contato no dataLayer
+    trackDataLayerContact('WhatsApp');
+    
     // Rastrear evento de contato no Meta
     trackMetaContact('WhatsApp');
     

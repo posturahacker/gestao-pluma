@@ -10,6 +10,7 @@ import WhatsAppButton from "./components/WhatsAppButton";
 import { trackPageView as trackPinterestPageView } from "./services/PinterestConversionsAPI";
 import { initializeTikTokPixel, trackPageView as trackTikTokPageView } from "./services/TikTokPixel";
 import { initializeGoogleAnalytics, trackPageView as trackGooglePageView } from "./services/GoogleAnalytics";
+import { trackPageView as trackDataLayerPageView } from "./services/DataLayer";
 
 const queryClient = new QueryClient();
 
@@ -18,10 +19,15 @@ const PageTracker = () => {
   const location = useLocation();
 
   useEffect(() => {
+    // Rastrear visualização de página no dataLayer
+    trackDataLayerPageView();
+    
     // Rastrear visualização de página no Pinterest
     trackPinterestPageView();
+    
     // Rastrear visualização de página no TikTok
     trackTikTokPageView();
+    
     // Rastrear visualização de página no Google Analytics
     trackGooglePageView();
   }, [location]);

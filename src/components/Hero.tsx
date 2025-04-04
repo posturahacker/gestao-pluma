@@ -2,8 +2,9 @@ import React, { useEffect, useRef } from 'react';
 import Button from './Button';
 import { motion } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
-import { trackInitiateCheckout } from '@/services/GoogleAnalytics';
+import { trackInitiateCheckout as trackGoogleCheckout } from '@/services/GoogleAnalytics';
 import { trackCheckout as trackPinterestCheckout } from '@/services/PinterestConversionsAPI';
+import { trackInitiateCheckout as trackDataLayerCheckout } from '@/services/DataLayer';
 import { trackInitiateCheckout as trackMetaCheckout } from '@/services/MetaConversionsAPI';
 import { trackInitiateCheckout as trackTikTokCheckout } from '@/services/TikTokPixel';
 
@@ -95,8 +96,9 @@ const Hero = () => {
               href="https://payment.ticto.app/O5114D5AA"
               target="_blank"
               onClick={() => {
-                trackInitiateCheckout('GestãoPluma', 47);
+                trackGoogleCheckout('GestãoPluma', 47);
                 trackPinterestCheckout('GestãoPluma', 47);
+                trackDataLayerCheckout('GestãoPluma', 47);
               }}
             >
               Quero organizar minha prática clínica
