@@ -163,8 +163,33 @@ const trackContact = (contactMethod: string) => sendEvent('Contact', {
   value: 0
 });
 
+/**
+ * Rastrear evento de início de checkout
+ */
+function trackInitiateCheckout(planName: string, price: number): void {
+  try {
+    if (!window.fbq) {
+      console.error('[Meta Pixel] fbq não está disponível');
+      return;
+    }
+
+    if (DEBUG) {
+      console.log('[Meta Pixel] Rastreando início de checkout:', { planName, price });
+    }
+
+    window.fbq('track', 'InitiateCheckout', {
+      content_name: planName,
+      currency: 'BRL',
+      value: price
+    });
+  } catch (error) {
+    console.error('[Meta Pixel] Erro ao rastrear início de checkout:', error);
+  }
+}
+
 export {
   trackPageView,
   trackContact,
+  trackInitiateCheckout,
   sendEvent
 }; 

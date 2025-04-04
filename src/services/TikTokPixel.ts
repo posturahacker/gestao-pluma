@@ -157,8 +157,33 @@ function trackContact(contactMethod: string): void {
   }
 }
 
+/**
+ * Rastrear evento de início de checkout
+ */
+function trackInitiateCheckout(planName: string, price: number): void {
+  try {
+    if (!window.ttq) {
+      console.error('[TikTok Pixel] ttq não está disponível');
+      return;
+    }
+
+    if (DEBUG) {
+      console.log('[TikTok Pixel] Rastreando início de checkout:', { planName, price });
+    }
+
+    window.ttq.track('InitiateCheckout', {
+      content_name: planName,
+      currency: 'BRL',
+      value: price
+    });
+  } catch (error) {
+    console.error('[TikTok Pixel] Erro ao rastrear início de checkout:', error);
+  }
+}
+
 export {
   initializeTikTokPixel,
   trackPageView,
-  trackContact
+  trackContact,
+  trackInitiateCheckout
 }; 

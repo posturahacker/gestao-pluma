@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import Button from './Button';
 import { cn } from '@/lib/utils';
-import { trackInitiateCheckout } from '@/services/GoogleAnalytics';
+import { trackInitiateCheckout as trackGoogleCheckout } from '@/services/GoogleAnalytics';
 import { trackCheckout as trackPinterestCheckout } from '@/services/PinterestConversionsAPI';
+import { trackInitiateCheckout as trackMetaCheckout } from '@/services/MetaConversionsAPI';
+import { trackInitiateCheckout as trackTikTokCheckout } from '@/services/TikTokPixel';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,6 +24,23 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handlePurchaseClick = () => {
+    // Rastrear evento de checkout no Google Analytics
+    trackGoogleCheckout('GestãoPluma', 47);
+    
+    // Rastrear evento de checkout no Pinterest
+    trackPinterestCheckout('GestãoPluma', 47);
+
+    // Rastrear evento de checkout no Meta
+    trackMetaCheckout('GestãoPluma', 47);
+
+    // Rastrear evento de checkout no TikTok
+    trackTikTokCheckout('GestãoPluma', 47);
+    
+    // Redirecionar para a página de checkout
+    window.location.href = 'https://pay.hotmart.com/O92271784U';
+  };
 
   return (
     <header
@@ -117,12 +136,7 @@ const Navbar = () => {
             <Button 
               variant="primary" 
               className="w-full"
-              href="https://payment.ticto.app/O5114D5AA"
-              target="_blank"
-              onClick={() => {
-                trackInitiateCheckout('GestãoPluma', 47);
-                trackPinterestCheckout('GestãoPluma', 47);
-              }}
+              onClick={handlePurchaseClick}
             >
               Quero organizar minha prática
             </Button>

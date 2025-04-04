@@ -2,8 +2,10 @@ import React, { useEffect, useRef } from 'react';
 import Button from './Button';
 import { Check } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { trackInitiateCheckout } from '@/services/GoogleAnalytics';
+import { trackInitiateCheckout as trackGoogleCheckout } from '@/services/GoogleAnalytics';
 import { trackCheckout as trackPinterestCheckout } from '@/services/PinterestConversionsAPI';
+import { trackInitiateCheckout as trackMetaCheckout } from '@/services/MetaConversionsAPI';
+import { trackInitiateCheckout as trackTikTokCheckout } from '@/services/TikTokPixel';
 
 const BrandName = () => (
   <span className="whitespace-nowrap">Gestão<span className="italic">Pluma</span></span>
@@ -49,6 +51,23 @@ const Pricing = () => {
       }
     };
   }, []);
+
+  const handlePurchaseClick = () => {
+    // Rastrear evento de checkout no Google Analytics
+    trackGoogleCheckout('GestãoPluma', 47);
+    
+    // Rastrear evento de checkout no Pinterest
+    trackPinterestCheckout('GestãoPluma', 47);
+
+    // Rastrear evento de checkout no Meta
+    trackMetaCheckout('GestãoPluma', 47);
+
+    // Rastrear evento de checkout no TikTok
+    trackTikTokCheckout('GestãoPluma', 47);
+    
+    // Redirecionar para a página de checkout
+    window.location.href = 'https://pay.hotmart.com/O92271784U';
+  };
 
   return (
     <section id="pricing" className="py-20 bg-gradient-to-b from-psi-50 to-white relative overflow-hidden">
@@ -110,18 +129,13 @@ const Pricing = () => {
                 </p>
               </div>
               
-              <Button 
-                variant="primary" 
-                size="lg" 
-                className="w-full py-6 text-lg shadow-lg shadow-psi-300/20"
-                href="https://payment.ticto.app/O5114D5AA"
-                target="_blank"
-                onClick={() => {
-                  trackInitiateCheckout('GestãoPluma', 47);
-                  trackPinterestCheckout('GestãoPluma', 47);
-                }}
+              <Button
+                variant="default"
+                size="lg"
+                className="mt-8"
+                onClick={handlePurchaseClick}
               >
-                Quero meu <BrandName />!
+                Quero meu GestãoPluma!
               </Button>
             </div>
           </div>

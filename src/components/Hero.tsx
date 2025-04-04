@@ -2,8 +2,10 @@ import React, { useEffect, useRef } from 'react';
 import Button from './Button';
 import { motion } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
-import { trackInitiateCheckout } from '@/services/GoogleAnalytics';
+import { trackInitiateCheckout as trackGoogleCheckout } from '@/services/GoogleAnalytics';
 import { trackCheckout as trackPinterestCheckout } from '@/services/PinterestConversionsAPI';
+import { trackInitiateCheckout as trackMetaCheckout } from '@/services/MetaConversionsAPI';
+import { trackInitiateCheckout as trackTikTokCheckout } from '@/services/TikTokPixel';
 
 const BrandName = () => (
   <>
@@ -28,6 +30,23 @@ const Hero = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handlePurchaseClick = () => {
+    // Rastrear evento de checkout no Google Analytics
+    trackGoogleCheckout('GestãoPluma', 47);
+    
+    // Rastrear evento de checkout no Pinterest
+    trackPinterestCheckout('GestãoPluma', 47);
+
+    // Rastrear evento de checkout no Meta
+    trackMetaCheckout('GestãoPluma', 47);
+
+    // Rastrear evento de checkout no TikTok
+    trackTikTokCheckout('GestãoPluma', 47);
+    
+    // Redirecionar para a página de checkout
+    window.location.href = 'https://pay.hotmart.com/O92271784U';
+  };
 
   return (
     <section className="relative pt-36 pb-24 md:pt-44 md:pb-32 overflow-hidden">
@@ -86,15 +105,11 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
           >
-            <Button 
-              variant="primary" 
-              size="md" 
-              className="shadow-lg shadow-psi-300/20 px-8 py-3 rounded-[32px]"
-              href="#pricing"
-              onClick={() => {
-                trackInitiateCheckout('GestãoPluma', 47);
-                trackPinterestCheckout('GestãoPluma', 47);
-              }}
+            <Button
+              variant="default"
+              size="lg"
+              className="mt-8"
+              onClick={handlePurchaseClick}
             >
               Quero organizar minha prática clínica
             </Button>
