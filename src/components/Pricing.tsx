@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import Button from './Button';
 import { Check } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { trackInitiateCheckout } from '@/services/GoogleAnalytics';
 
 const BrandName = () => (
   <span className="whitespace-nowrap">Gestão<span className="italic">Pluma</span></span>
@@ -114,6 +115,7 @@ const Pricing = () => {
                 className="w-full py-6 text-lg shadow-lg shadow-psi-300/20"
                 href="https://payment.ticto.app/O5114D5AA"
                 target="_blank"
+                onClick={() => trackInitiateCheckout('GestãoPluma', 47)}
               >
                 Quero meu <BrandName />!
               </Button>

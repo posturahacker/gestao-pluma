@@ -102,8 +102,36 @@ function trackContact(contactMethod: string): void {
   }
 }
 
+/**
+ * Rastrear evento de início de checkout
+ */
+function trackInitiateCheckout(planName: string, price: number): void {
+  try {
+    if (!window.gtag) {
+      console.error('[Google Analytics] gtag não está disponível');
+      return;
+    }
+
+    if (DEBUG) {
+      console.log('[Google Analytics] Rastreando início de checkout:', { planName, price });
+    }
+
+    window.gtag('event', 'begin_checkout', {
+      currency: 'BRL',
+      value: price,
+      items: [{
+        item_name: planName,
+        price: price
+      }]
+    });
+  } catch (error) {
+    console.error('[Google Analytics] Erro ao rastrear início de checkout:', error);
+  }
+}
+
 export {
   initializeGoogleAnalytics,
   trackPageView,
-  trackContact
+  trackContact,
+  trackInitiateCheckout
 }; 

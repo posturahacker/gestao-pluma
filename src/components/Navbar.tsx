@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import Button from './Button';
 import { cn } from '@/lib/utils';
+import { trackInitiateCheckout } from '@/services/GoogleAnalytics';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -117,6 +118,7 @@ const Navbar = () => {
               className="w-full"
               href="https://payment.ticto.app/O5114D5AA"
               target="_blank"
+              onClick={() => trackInitiateCheckout('GestãoPluma', 47)}
             >
               Quero organizar minha prática
             </Button>
