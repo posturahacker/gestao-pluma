@@ -5,7 +5,7 @@ declare global {
   }
 }
 
-const MEASUREMENT_ID = 'G-766KC1DRRL';
+const MEASUREMENT_IDS = ['G-766KC1DRRL', 'G-BP9Z0961BC'];
 const DEBUG = true;
 
 /**
@@ -17,25 +17,27 @@ function initializeGoogleAnalytics(): void {
       console.log('[Google Analytics] Iniciando configuração...');
     }
 
-    // Criar script do GA4
-    const script = document.createElement('script');
-    script.async = true;
-    script.src = `https://www.googletagmanager.com/gtag/js?id=${MEASUREMENT_ID}`;
-    
-    // Adicionar handler de erro para o script
-    script.onerror = function(error) {
-      console.error('[Google Analytics] Erro ao carregar script:', error);
-    };
+    // Criar script do GA4 para cada conta
+    MEASUREMENT_IDS.forEach((measurementId) => {
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+      
+      // Adicionar handler de erro para o script
+      script.onerror = function(error) {
+        console.error(`[Google Analytics] Erro ao carregar script para ${measurementId}:`, error);
+      };
 
-    // Adicionar handler de carregamento
-    script.onload = function() {
-      if (DEBUG) {
-        console.log('[Google Analytics] Script carregado com sucesso');
-      }
-    };
+      // Adicionar handler de carregamento
+      script.onload = function() {
+        if (DEBUG) {
+          console.log(`[Google Analytics] Script carregado com sucesso para ${measurementId}`);
+        }
+      };
 
-    // Inserir script no head
-    document.head.appendChild(script);
+      // Inserir script no head
+      document.head.appendChild(script);
+    });
 
     // Inicializar dataLayer
     window.dataLayer = window.dataLayer || [];
@@ -44,9 +46,11 @@ function initializeGoogleAnalytics(): void {
     }
     window.gtag = gtag;
 
-    // Configurar GA4
+    // Configurar GA4 para cada conta
     gtag('js', new Date());
-    gtag('config', MEASUREMENT_ID);
+    MEASUREMENT_IDS.forEach((measurementId) => {
+      gtag('config', measurementId);
+    });
 
     if (DEBUG) {
       console.log('[Google Analytics] Configuração concluída');
@@ -72,8 +76,12 @@ function trackPageView(path?: string): void {
       console.log('[Google Analytics] Rastreando visualização de página:', pageLocation);
     }
 
-    window.gtag('event', 'page_view', {
-      page_location: pageLocation
+    // Enviar evento para cada conta
+    MEASUREMENT_IDS.forEach((measurementId) => {
+      window.gtag('event', 'page_view', {
+        page_location: pageLocation,
+        send_to: measurementId
+      });
     });
   } catch (error) {
     console.error('[Google Analytics] Erro ao rastrear visualização de página:', error);
@@ -94,8 +102,12 @@ function trackContact(contactMethod: string): void {
       console.log('[Google Analytics] Rastreando evento de contato:', contactMethod);
     }
 
-    window.gtag('event', 'contact', {
-      method: contactMethod
+    // Enviar evento para cada conta
+    MEASUREMENT_IDS.forEach((measurementId) => {
+      window.gtag('event', 'contact', {
+        method: contactMethod,
+        send_to: measurementId
+      });
     });
   } catch (error) {
     console.error('[Google Analytics] Erro ao rastrear evento de contato:', error);
@@ -116,13 +128,17 @@ function trackInitiateCheckout(planName: string, price: number): void {
       console.log('[Google Analytics] Rastreando início de checkout:', { planName, price });
     }
 
-    window.gtag('event', 'begin_checkout', {
-      currency: 'BRL',
-      value: price,
-      items: [{
-        item_name: planName,
-        price: price
-      }]
+    // Enviar evento para cada conta
+    MEASUREMENT_IDS.forEach((measurementId) => {
+      window.gtag('event', 'begin_checkout', {
+        currency: 'BRL',
+        value: price,
+        items: [{
+          item_name: planName,
+          price: price
+        }],
+        send_to: measurementId
+      });
     });
   } catch (error) {
     console.error('[Google Analytics] Erro ao rastrear início de checkout:', error);
