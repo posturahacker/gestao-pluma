@@ -130,12 +130,17 @@ const Pricing = () => {
               </div>
               
               <Button
-                variant="default"
+                variant="primary" 
                 size="lg"
-                className="mt-8"
-                onClick={handlePurchaseClick}
+                className="w-full py-6 text-lg shadow-lg shadow-psi-300/20"
+                href="https://payment.ticto.app/O5114D5AA"
+                target="_blank"
+                onClick={() => {
+                  trackInitiateCheckout('GestãoPluma', 47);
+                  trackPinterestCheckout('GestãoPluma', 47);
+                }}
               >
-                Quero meu GestãoPluma!
+                Quero meu <BrandName />!
               </Button>
             </div>
           </div>
