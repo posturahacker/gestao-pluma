@@ -3,6 +3,7 @@ import Button from './Button';
 import { Check } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { trackInitiateCheckout } from '@/services/GoogleAnalytics';
+import { trackCheckout as trackPinterestCheckout } from '@/services/PinterestConversionsAPI';
 
 const BrandName = () => (
   <span className="whitespace-nowrap">Gestão<span className="italic">Pluma</span></span>
@@ -115,7 +116,10 @@ const Pricing = () => {
                 className="w-full py-6 text-lg shadow-lg shadow-psi-300/20"
                 href="https://payment.ticto.app/O5114D5AA"
                 target="_blank"
-                onClick={() => trackInitiateCheckout('GestãoPluma', 47)}
+                onClick={() => {
+                  trackInitiateCheckout('GestãoPluma', 47);
+                  trackPinterestCheckout('GestãoPluma', 47);
+                }}
               >
                 Quero meu <BrandName />!
               </Button>

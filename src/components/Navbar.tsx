@@ -4,6 +4,7 @@ import { Menu, X } from 'lucide-react';
 import Button from './Button';
 import { cn } from '@/lib/utils';
 import { trackInitiateCheckout } from '@/services/GoogleAnalytics';
+import { trackCheckout as trackPinterestCheckout } from '@/services/PinterestConversionsAPI';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -118,7 +119,10 @@ const Navbar = () => {
               className="w-full"
               href="https://payment.ticto.app/O5114D5AA"
               target="_blank"
-              onClick={() => trackInitiateCheckout('GestãoPluma', 47)}
+              onClick={() => {
+                trackInitiateCheckout('GestãoPluma', 47);
+                trackPinterestCheckout('GestãoPluma', 47);
+              }}
             >
               Quero organizar minha prática
             </Button>

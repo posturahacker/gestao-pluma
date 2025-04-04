@@ -3,6 +3,7 @@ import Button from './Button';
 import { motion } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
 import { trackInitiateCheckout } from '@/services/GoogleAnalytics';
+import { trackCheckout as trackPinterestCheckout } from '@/services/PinterestConversionsAPI';
 
 const BrandName = () => (
   <>
@@ -90,7 +91,10 @@ const Hero = () => {
               size="md" 
               className="shadow-lg shadow-psi-300/20 px-8 py-3 rounded-[32px]"
               href="#pricing"
-              onClick={() => trackInitiateCheckout('GestãoPluma', 47)}
+              onClick={() => {
+                trackInitiateCheckout('GestãoPluma', 47);
+                trackPinterestCheckout('GestãoPluma', 47);
+              }}
             >
               Quero organizar minha prática clínica
             </Button>
