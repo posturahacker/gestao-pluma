@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/kiwify",
+      "destination": "/kiwify/index.html"
+    },
+    {
       "source": "/kiwify/(.*)",
       "destination": "/kiwify/$1"
     }
