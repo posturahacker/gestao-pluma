@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import Index from "./pages/Index";
 import Kiwify from "./pages/Kiwify";
 import NotFound from "./pages/NotFound";
-import WhatsAppButton from "./components/WhatsAppButton";
+import { WhatsAppButton } from "./components/WhatsAppButton";
 import { trackPageView as trackPinterestPageView } from "./services/PinterestConversionsAPI";
 import { initializeTikTokPixel, trackPageView as trackTikTokPageView } from "./services/TikTokPixel";
 import { initializeGoogleAnalytics, trackPageView as trackGooglePageView } from "./services/GoogleAnalytics";

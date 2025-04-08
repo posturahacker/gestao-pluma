@@ -5,7 +5,7 @@ import { trackTikTokContact } from '../services/TikTokPixel';
 import { trackPinterestContact } from '../services/PinterestConversionsAPI';
 import { trackDataLayerContact } from '../services/DataLayer';
 
-const WhatsAppButton = () => {
+export const WhatsAppButton = () => {
   const handleClick = () => {
     // Tracking
     trackGoogleContact('WhatsApp');
@@ -42,6 +42,4 @@ const WhatsAppButton = () => {
       WhatsApp
     </Button>
   );
-};
-
-export default WhatsAppButton; 
+}; 
