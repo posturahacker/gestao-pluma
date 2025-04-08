@@ -68,7 +68,7 @@ const Feature: React.FC<FeatureProps> = ({ title, description, icon, delay, isPr
   );
 };
 
-const Features = () => {
+export const Features = () => {
   const featuresData = [
     {
       title: "Gestão de Pacientes",
@@ -165,5 +165,3 @@ const Features = () => {
     </section>
   );
 };
-
-export default Features;

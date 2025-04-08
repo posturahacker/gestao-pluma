@@ -9,7 +9,7 @@ const BrandName = () => (
   </>
 );
 
-const Benefits = () => {
+export const Benefits = () => {
   const benefitsData = [
     {
       title: "Economia de tempo",
@@ -112,5 +112,3 @@ const Benefits = () => {
     </section>
   );
 };
-
-export default Benefits;

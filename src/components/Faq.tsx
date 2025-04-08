@@ -49,7 +49,7 @@ const BrandName = () => (
   </>
 );
 
-const Faq = () => {
+export const Faq = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const sectionRef = useRef<HTMLDivElement>(null);
   
@@ -132,5 +132,3 @@ const Faq = () => {
     </section>
   );
 };
-
-export default Faq;

@@ -55,7 +55,7 @@ const TestimonialCard: React.FC<TestimonialProps & { className?: string }> = ({ 
   );
 };
 
-const Testimonials = () => {
+export const Testimonials = () => {
   const [activeSlide, setActiveSlide] = useState(0);
   const sectionRef = useRef<HTMLDivElement>(null);
   const maxSlides = Math.ceil(testimonialData.length / 3);
@@ -164,5 +164,3 @@ const Testimonials = () => {
     </section>
   );
 };
-
-export default Testimonials;
