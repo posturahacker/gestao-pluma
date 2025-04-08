@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/kiwify/(.*)",
+      "destination": "/kiwify/$1"
+    }
+  ]
+} 
