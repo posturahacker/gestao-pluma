@@ -8,13 +8,17 @@ import { trackInitiateCheckout as trackDataLayerCheckout } from '@/services/Data
 import { trackInitiateCheckout as trackMetaCheckout } from '@/services/MetaConversionsAPI';
 import { trackInitiateCheckout as trackTikTokCheckout } from '@/services/TikTokPixel';
 
+interface HeroProps {
+  isKiwify?: boolean
+}
+
 const BrandName = () => (
   <>
     Gestão<span className="italic">Pluma</span>
   </>
 );
 
-const Hero = () => {
+export function Hero({ isKiwify = false }: HeroProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -33,13 +37,15 @@ const Hero = () => {
   }, []);
 
   const handleClick = () => {
-    // Tracking
+    // Track events
     trackGoogleCheckout('GestãoPluma', 47);
     trackPinterestCheckout('GestãoPluma', 47);
     trackDataLayerCheckout('GestãoPluma', 47);
-    
+
     // Redirecionamento
-    window.location.href = 'https://payment.ticto.app/O5114D5AA';
+    window.location.href = isKiwify 
+      ? 'https://pay.kiwify.com.br/avjNVQ2'
+      : 'https://payment.ticto.app/O5114D5AA';
   };
 
   return (
@@ -103,7 +109,7 @@ const Hero = () => {
               variant="primary" 
               size="md" 
               className="shadow-lg shadow-psi-300/20 px-8 py-3 rounded-[32px]"
-              href="https://payment.ticto.app/O5114D5AA"
+              href={isKiwify ? 'https://pay.kiwify.com.br/avjNVQ2' : 'https://payment.ticto.app/O5114D5AA'}
               target="_blank"
               onClick={handleClick}
             >
@@ -132,6 +138,4 @@ const Hero = () => {
       </div>
     </section>
   );
-};
-
-export default Hero;
+}

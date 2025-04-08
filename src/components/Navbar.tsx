@@ -10,7 +10,11 @@ import { trackInitiateCheckout as trackTikTokCheckout } from '@/services/TikTokP
 import { trackGoogleCheckout } from '../services/GoogleAnalytics';
 import { trackDataLayerCheckout } from '../services/DataLayer';
 
-const Navbar = () => {
+interface NavbarProps {
+  isKiwify?: boolean
+}
+
+export function Navbar({ isKiwify = false }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -28,13 +32,15 @@ const Navbar = () => {
   }, []);
 
   const handleClick = () => {
-    // Tracking
+    // Track events
     trackGoogleCheckout('GestãoPluma', 47);
     trackPinterestCheckout('GestãoPluma', 47);
     trackDataLayerCheckout('GestãoPluma', 47);
-    
+
     // Redirecionamento
-    window.location.href = 'https://payment.ticto.app/O5114D5AA';
+    window.location.href = isKiwify 
+      ? 'https://pay.kiwify.com.br/avjNVQ2'
+      : 'https://payment.ticto.app/O5114D5AA';
   };
 
   return (
@@ -67,7 +73,7 @@ const Navbar = () => {
             <Button
               variant="primary" 
               className="w-full"
-              href="https://payment.ticto.app/O5114D5AA"
+              href={isKiwify ? 'https://pay.kiwify.com.br/avjNVQ2' : 'https://payment.ticto.app/O5114D5AA'}
               target="_blank"
               onClick={handleClick}
             >
@@ -132,7 +138,7 @@ const Navbar = () => {
             <Button
               variant="primary" 
               className="w-full"
-              href="https://payment.ticto.app/O5114D5AA"
+              href={isKiwify ? 'https://pay.kiwify.com.br/avjNVQ2' : 'https://payment.ticto.app/O5114D5AA'}
               target="_blank"
               onClick={handleClick}
             >
@@ -143,6 +149,4 @@ const Navbar = () => {
       </div>
     </header>
   );
-};
-
-export default Navbar;
+}

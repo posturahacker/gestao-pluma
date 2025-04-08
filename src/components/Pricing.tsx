@@ -21,7 +21,11 @@ const PricingFeature: React.FC<{ children: React.ReactNode }> = ({ children }) =
   );
 };
 
-const Pricing = () => {
+interface PricingProps {
+  isKiwify?: boolean
+}
+
+export function Pricing({ isKiwify = false }: PricingProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
   
@@ -54,23 +58,15 @@ const Pricing = () => {
   }, []);
 
   const handlePurchaseClick = () => {
-    // Rastrear evento de checkout no Google Analytics
+    // Track events
     trackGoogleCheckout('GestãoPluma', 47);
-    
-    // Rastrear evento de checkout no Pinterest
     trackPinterestCheckout('GestãoPluma', 47);
-
-    // Rastrear evento de checkout no Meta
-    trackMetaCheckout('GestãoPluma', 47);
-
-    // Rastrear evento de checkout no TikTok
-    trackTikTokCheckout('GestãoPluma', 47);
-
-    // Rastrear evento de checkout no Data Layer
     trackDataLayerCheckout('GestãoPluma', 47);
-    
+
     // Redirecionar para a página de checkout
-    window.location.href = 'https://payment.ticto.app/O5114D5AA';
+    window.location.href = isKiwify 
+      ? 'https://pay.kiwify.com.br/avjNVQ2'
+      : 'https://payment.ticto.app/O5114D5AA';
   };
 
   return (
@@ -137,7 +133,7 @@ const Pricing = () => {
                 variant="primary" 
                 size="lg"
                 className="w-full py-6 text-lg shadow-lg shadow-psi-300/20"
-                href="https://payment.ticto.app/O5114D5AA"
+                href={isKiwify ? 'https://pay.kiwify.com.br/avjNVQ2' : 'https://payment.ticto.app/O5114D5AA'}
                 target="_blank"
                 onClick={handlePurchaseClick}
               >
@@ -156,6 +152,6 @@ const Pricing = () => {
       </div>
     </section>
   );
-};
+}
 
 export default Pricing;
