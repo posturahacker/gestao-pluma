@@ -1,10 +1,10 @@
+const DEBUG = true;
+
 declare global {
   interface Window {
     dataLayer: any[];
   }
 }
-
-const DEBUG = true;
 
 /**
  * Envia um evento para o dataLayer
@@ -63,6 +63,42 @@ function trackInitiateCheckout(planName: string, price: number): void {
     }]
   });
 }
+
+export const trackDataLayerPageView = () => {
+  if (typeof window !== 'undefined' && window.dataLayer) {
+    window.dataLayer.push({
+      event: 'page_view',
+      page_path: window.location.pathname,
+      page_title: document.title
+    });
+    if (DEBUG) console.log('DataLayer: PageView tracked');
+  }
+};
+
+export const trackDataLayerContact = (method: string) => {
+  if (typeof window !== 'undefined' && window.dataLayer) {
+    window.dataLayer.push({
+      event: 'contact',
+      method: method
+    });
+    if (DEBUG) console.log('DataLayer: Contact tracked', { method });
+  }
+};
+
+export const trackDataLayerCheckout = (productName: string, price: number) => {
+  if (typeof window !== 'undefined' && window.dataLayer) {
+    window.dataLayer.push({
+      event: 'begin_checkout',
+      currency: 'BRL',
+      value: price,
+      items: [{
+        item_name: productName,
+        price: price
+      }]
+    });
+    if (DEBUG) console.log('DataLayer: Checkout tracked', { productName, price });
+  }
+};
 
 export {
   pushEvent,

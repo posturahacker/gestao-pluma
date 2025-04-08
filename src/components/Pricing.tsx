@@ -6,6 +6,7 @@ import { trackInitiateCheckout as trackGoogleCheckout } from '@/services/GoogleA
 import { trackCheckout as trackPinterestCheckout } from '@/services/PinterestConversionsAPI';
 import { trackInitiateCheckout as trackMetaCheckout } from '@/services/MetaConversionsAPI';
 import { trackInitiateCheckout as trackTikTokCheckout } from '@/services/TikTokPixel';
+import { trackDataLayerCheckout } from '../services/DataLayer';
 
 const BrandName = () => (
   <span className="whitespace-nowrap">Gestão<span className="italic">Pluma</span></span>
@@ -64,9 +65,12 @@ const Pricing = () => {
 
     // Rastrear evento de checkout no TikTok
     trackTikTokCheckout('GestãoPluma', 47);
+
+    // Rastrear evento de checkout no Data Layer
+    trackDataLayerCheckout('GestãoPluma', 47);
     
     // Redirecionar para a página de checkout
-    window.location.href = 'https://pay.hotmart.com/O92271784U';
+    window.location.href = 'https://payment.ticto.app/O5114D5AA';
   };
 
   return (
@@ -135,10 +139,7 @@ const Pricing = () => {
                 className="w-full py-6 text-lg shadow-lg shadow-psi-300/20"
                 href="https://payment.ticto.app/O5114D5AA"
                 target="_blank"
-                onClick={() => {
-                  trackInitiateCheckout('GestãoPluma', 47);
-                  trackPinterestCheckout('GestãoPluma', 47);
-                }}
+                onClick={handlePurchaseClick}
               >
                 Quero meu <BrandName />!
               </Button>

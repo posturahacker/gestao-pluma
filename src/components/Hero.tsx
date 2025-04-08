@@ -32,6 +32,16 @@ const Hero = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleClick = () => {
+    // Tracking
+    trackGoogleCheckout('GestãoPluma', 47);
+    trackPinterestCheckout('GestãoPluma', 47);
+    trackDataLayerCheckout('GestãoPluma', 47);
+    
+    // Redirecionamento
+    window.location.href = 'https://payment.ticto.app/O5114D5AA';
+  };
+
   return (
     <section className="relative pt-36 pb-24 md:pt-44 md:pb-32 overflow-hidden">
       {/* Decorative elements */}
@@ -95,11 +105,7 @@ const Hero = () => {
               className="shadow-lg shadow-psi-300/20 px-8 py-3 rounded-[32px]"
               href="https://payment.ticto.app/O5114D5AA"
               target="_blank"
-              onClick={() => {
-                trackGoogleCheckout('GestãoPluma', 47);
-                trackPinterestCheckout('GestãoPluma', 47);
-                trackDataLayerCheckout('GestãoPluma', 47);
-              }}
+              onClick={handleClick}
             >
               Quero organizar minha prática clínica
             </Button>

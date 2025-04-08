@@ -181,6 +181,33 @@ function trackInitiateCheckout(planName: string, price: number): void {
   }
 }
 
+export const trackTikTokPageView = () => {
+  if (typeof window !== 'undefined' && window.ttq) {
+    window.ttq.track('page');
+    if (DEBUG) console.log('TikTok Pixel: PageView tracked');
+  }
+};
+
+export const trackTikTokContact = (method: string) => {
+  if (typeof window !== 'undefined' && window.ttq) {
+    window.ttq.track('Contact', {
+      content_name: method
+    });
+    if (DEBUG) console.log('TikTok Pixel: Contact tracked', { method });
+  }
+};
+
+export const trackTikTokCheckout = (productName: string, price: number) => {
+  if (typeof window !== 'undefined' && window.ttq) {
+    window.ttq.track('InitiateCheckout', {
+      content_name: productName,
+      currency: 'BRL',
+      value: price
+    });
+    if (DEBUG) console.log('TikTok Pixel: InitiateCheckout tracked', { productName, price });
+  }
+};
+
 export {
   initializeTikTokPixel,
   trackPageView,

@@ -387,6 +387,33 @@ function trackCustomEvent(eventName: string, customData?: Record<string, any>): 
   }
 }
 
+export const trackPinterestPageView = () => {
+  if (typeof window !== 'undefined' && window.pintrk) {
+    window.pintrk('track', 'pagevisit');
+    if (DEBUG) console.log('Pinterest Tag: PageView tracked');
+  }
+};
+
+export const trackPinterestContact = (method: string) => {
+  if (typeof window !== 'undefined' && window.pintrk) {
+    window.pintrk('track', 'lead', {
+      content_name: method
+    });
+    if (DEBUG) console.log('Pinterest Tag: Lead tracked', { method });
+  }
+};
+
+export const trackPinterestCheckout = (productName: string, price: number) => {
+  if (typeof window !== 'undefined' && window.pintrk) {
+    window.pintrk('track', 'checkout', {
+      content_name: productName,
+      currency: 'BRL',
+      value: price
+    });
+    if (DEBUG) console.log('Pinterest Tag: Checkout tracked', { productName, price });
+  }
+};
+
 export {
   initializePinterestTag,
   trackPageView,

@@ -1,3 +1,5 @@
+import { Analytics } from '@vercel/analytics/react';
+
 declare global {
   interface Window {
     dataLayer: any[];
@@ -144,6 +146,36 @@ function trackInitiateCheckout(planName: string, price: number): void {
     console.error('[Google Analytics] Erro ao rastrear início de checkout:', error);
   }
 }
+
+export const trackGooglePageView = () => {
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('config', '483483132', {
+      page_path: window.location.pathname,
+      page_title: document.title
+    });
+  }
+};
+
+export const trackGoogleContact = (method: string) => {
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', 'contact', {
+      method: method
+    });
+  }
+};
+
+export const trackGoogleCheckout = (productName: string, price: number) => {
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', 'begin_checkout', {
+      currency: 'BRL',
+      value: price,
+      items: [{
+        item_name: productName,
+        price: price
+      }]
+    });
+  }
+};
 
 export {
   initializeGoogleAnalytics,

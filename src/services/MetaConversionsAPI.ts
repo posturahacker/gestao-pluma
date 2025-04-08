@@ -33,6 +33,14 @@ interface EventData {
   action_source: string;
 }
 
+const DEBUG = true;
+
+declare global {
+  interface Window {
+    fbq: any;
+  }
+}
+
 /**
  * Função para hash SHA-256
  */
@@ -186,6 +194,33 @@ function trackInitiateCheckout(planName: string, price: number): void {
     console.error('[Meta Pixel] Erro ao rastrear início de checkout:', error);
   }
 }
+
+export const trackMetaPageView = () => {
+  if (typeof window !== 'undefined' && window.fbq) {
+    window.fbq('track', 'PageView');
+    if (DEBUG) console.log('Meta Pixel: PageView tracked');
+  }
+};
+
+export const trackMetaContact = (method: string) => {
+  if (typeof window !== 'undefined' && window.fbq) {
+    window.fbq('track', 'Contact', {
+      content_name: method
+    });
+    if (DEBUG) console.log('Meta Pixel: Contact tracked', { method });
+  }
+};
+
+export const trackMetaCheckout = (productName: string, price: number) => {
+  if (typeof window !== 'undefined' && window.fbq) {
+    window.fbq('track', 'InitiateCheckout', {
+      content_name: productName,
+      currency: 'BRL',
+      value: price
+    });
+    if (DEBUG) console.log('Meta Pixel: InitiateCheckout tracked', { productName, price });
+  }
+};
 
 export {
   trackPageView,

@@ -1,29 +1,21 @@
 import { Button } from "@/components/ui/button";
-import { trackContact as trackMetaContact } from "@/services/MetaConversionsAPI";
-import { trackContact as trackPinterestContact } from "@/services/PinterestConversionsAPI";
-import { trackContact as trackTikTokContact } from "@/services/TikTokPixel";
-import { trackContact as trackGoogleContact } from "@/services/GoogleAnalytics";
-import { trackContact as trackDataLayerContact } from "@/services/DataLayer";
+import { trackGoogleContact } from '../services/GoogleAnalytics';
+import { trackMetaContact } from '../services/MetaConversionsAPI';
+import { trackTikTokContact } from '../services/TikTokPixel';
+import { trackPinterestContact } from '../services/PinterestConversionsAPI';
+import { trackDataLayerContact } from '../services/DataLayer';
 
 const WhatsAppButton = () => {
   const handleClick = () => {
-    // Rastrear evento de contato no dataLayer
+    // Tracking
+    trackGoogleContact('WhatsApp');
+    trackMetaContact('WhatsApp');
+    trackTikTokContact('WhatsApp');
+    trackPinterestContact('WhatsApp');
     trackDataLayerContact('WhatsApp');
     
-    // Rastrear evento de contato no Meta
-    trackMetaContact('WhatsApp');
-    
-    // Rastrear evento de contato no Pinterest
-    trackPinterestContact('WhatsApp');
-
-    // Rastrear evento de contato no TikTok
-    trackTikTokContact('WhatsApp');
-
-    // Rastrear evento de contato no Google Analytics
-    trackGoogleContact('WhatsApp');
-    
-    // Redirecionar para o WhatsApp
-    window.open('https://wa.me/5511973841920', '_blank');
+    // Redirecionamento
+    window.location.href = 'https://wa.me/5511973841920';
   };
 
   return (

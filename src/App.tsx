@@ -11,6 +11,7 @@ import { trackPageView as trackPinterestPageView } from "./services/PinterestCon
 import { initializeTikTokPixel, trackPageView as trackTikTokPageView } from "./services/TikTokPixel";
 import { initializeGoogleAnalytics, trackPageView as trackGooglePageView } from "./services/GoogleAnalytics";
 import { trackPageView as trackDataLayerPageView } from "./services/DataLayer";
+import { trackMetaPageView } from './services/MetaConversionsAPI';
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,9 @@ const PageTracker = () => {
     
     // Rastrear visualização de página no Google Analytics
     trackGooglePageView();
+
+    // Tracking de visualização de página
+    trackMetaPageView();
   }, [location]);
 
   return null;

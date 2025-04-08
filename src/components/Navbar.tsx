@@ -7,6 +7,8 @@ import { trackInitiateCheckout } from '@/services/GoogleAnalytics';
 import { trackCheckout as trackPinterestCheckout } from '@/services/PinterestConversionsAPI';
 import { trackInitiateCheckout as trackMetaCheckout } from '@/services/MetaConversionsAPI';
 import { trackInitiateCheckout as trackTikTokCheckout } from '@/services/TikTokPixel';
+import { trackGoogleCheckout } from '../services/GoogleAnalytics';
+import { trackDataLayerCheckout } from '../services/DataLayer';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,6 +26,16 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleClick = () => {
+    // Tracking
+    trackGoogleCheckout('GestãoPluma', 47);
+    trackPinterestCheckout('GestãoPluma', 47);
+    trackDataLayerCheckout('GestãoPluma', 47);
+    
+    // Redirecionamento
+    window.location.href = 'https://payment.ticto.app/O5114D5AA';
+  };
 
   return (
     <header
@@ -57,10 +69,7 @@ const Navbar = () => {
               className="w-full"
               href="https://payment.ticto.app/O5114D5AA"
               target="_blank"
-              onClick={() => {
-                trackInitiateCheckout('GestãoPluma', 47);
-                trackPinterestCheckout('GestãoPluma', 47);
-              }}
+              onClick={handleClick}
             >
               Quero organizar minha prática
             </Button>
@@ -125,10 +134,7 @@ const Navbar = () => {
               className="w-full"
               href="https://payment.ticto.app/O5114D5AA"
               target="_blank"
-              onClick={() => {
-                trackInitiateCheckout('GestãoPluma', 47);
-                trackPinterestCheckout('GestãoPluma', 47);
-              }}
+              onClick={handleClick}
             >
               Quero organizar minha prática
             </Button>
