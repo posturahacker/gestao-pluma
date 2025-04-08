@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
-import Navbar from '@/components/Navbar';
-import Hero from '@/components/Hero';
-import Features from '@/components/Features';
-import Benefits from '@/components/Benefits';
-import Testimonials from '@/components/Testimonials';
-import Pricing from '@/components/Pricing';
-import Faq from '@/components/Faq';
-import Footer from '@/components/Footer';
+import { Navbar } from '@/components/Navbar';
+import { Hero } from '@/components/Hero';
+import { Features } from '@/components/Features';
+import { Benefits } from '@/components/Benefits';
+import { Testimonials } from '@/components/Testimonials';
+import { Pricing } from '@/components/Pricing';
+import { Faq } from '@/components/Faq';
+import { Footer } from '@/components/Footer';
+import { WhatsAppButton } from '@/components/WhatsAppButton';
 import { motion } from 'framer-motion';
 import { trackPageView } from '@/services/MetaConversionsAPI';
 
@@ -51,6 +52,7 @@ const Index = () => {
       </main>
       
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 };
